@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <form action="join-process.jsp" method="post">
+        <div><label><span>ID</span><input type="text" name= "userId"/></label></div>
+        <div><label><span>PW</span><input type="text" name= "userPw"/></label></div>
+        <div><label><span>Name</span><input type="text" name= "userName"/></label></div>
+        <div><label><span>address</span><input type="text" name= "Address"/></label></div>
+        <div><label><span>zipcode</span><input type="text" name= "Zipcode"/></label></div>
+        <div>
+        <label><span>여자</span><input type="radio" value="female" name= "Gender"/></label>
+        <label><span>남자</span><input type="radio" value="male" name= "Gender"/></label>
+        </div>
+        <div><button>Join</button></div>
+    </form>
+</body>
+</html>
