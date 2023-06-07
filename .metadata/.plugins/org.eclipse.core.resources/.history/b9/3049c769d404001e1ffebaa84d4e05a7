@@ -1,0 +1,21 @@
+<%@include file = "include/header.jsp"%>
+<body>
+  <form action="join-process.jsp" method="post" class="join">
+    <div class="container-sm">
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" placeholder="아이디를 입력해주세요" />
+        <label for="floatingInput">ID</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" />
+        <label for="floatingPassword">Password</label>
+      </div>
+      <div class="form-floating">
+        <input type="text" class="form-control" id="floatingName" placeholder="Name" />
+        <label for="floatingName">Name</label>
+      </div>
+    </div>
+  </form>
+</body>
+
+<%@ include file = "include/footer.jsp" %>

@@ -42,13 +42,14 @@ if(rs.next()){
 	String userId = rs.getString("id");
 	String userPw = rs.getString("password");
 	String userName = rs.getString("name");
-	request.setAttribute("userId", userId);
-	request.getRequestDispatcher("login-ok.jsp");
-	pageContext.setAttribute("pageUserId", userId);//못넘어옴 페이지
-session.setAttribute("userId",userId);
-	//response.sendRedirect("login-ok.jsp?userId="+userId);
-	//request.getRequestDispatcher("");
-	//out.println("로그인 성공");
+	
+	
+	//request.setAttribute("userId", userId);
+	session.setAttribute("loggedUserId", userId);
+	session.setAttribute("loggedUserName", userName);
+	RequestDispatcher dispatcher = request.getRequestDispatcher("login-ok.jsp");
+	dispatcher.forward(request, response);
+	//request.getRequestDispatcher("login-ok.jsp").forward(request, response);
 }else{
 	out.println("로그인 실패");
 	

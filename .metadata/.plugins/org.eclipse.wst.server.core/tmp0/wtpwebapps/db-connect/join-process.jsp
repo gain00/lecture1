@@ -6,13 +6,14 @@
     pageEncoding="UTF-8"%>
 
 <%
+request.setCharacterEncoding("utf-8");
 String pUserId = request.getParameter("userId");
 String pUserPw = request.getParameter("userPw");
 String pUserName = request.getParameter("userName");
-String pAddress = request.getParameter("Address");
-String pZipcode = request.getParameter("Zipcode");
-String pGender = request.getParameter("Gender");
-
+String pUserAddress = request.getParameter("userAddress");
+int pZonecode = Integer.parseInt(request.getParameter("zonecode"));
+String pDetailAddress = request.getParameter("detailAddress");
+String pExtraAddress = request.getParameter("extraAddress");
 
 
 
@@ -25,20 +26,22 @@ Connection conn = null;
 PreparedStatement pstmt = null;
 ResultSet rs = null;
 
-String sql = " insert into member  values (?,?,?,?,?,?)";
+String sql = " insert into member  values (?,?,?,?,?,?,?)";
 
 Class.forName(driver);
 conn = DriverManager.getConnection(url,id,pw);
 pstmt = conn.prepareStatement(sql);
 
 pstmt.setString(1, pUserId);
-pstmt.setString(2, pUserName);
-pstmt.setString(3, pUserPw);
-pstmt.setString(4, pAddress);
-pstmt.setString(5, pZipcode);
-pstmt.setString(6, pGender);
-int result = pstmt.executeUpdate();
-response.setContentType("text/html;charset-utf-8");
+pstmt.setString(2, pUserPw);
+pstmt.setString(3, pUserName);
+pstmt.setInt(4, pZonecode);
+pstmt.setString(5, pUserAddress);
+pstmt.setString(6, pDetailAddress);
+pstmt.setString(7, pExtraAddress);
+
+int result = pstmt.executeUpdate(); //select를 제외하ㅏ ㄴ나머지 update,delete,insert executeUpdate를 사용
+
 
 
 if(result>0){

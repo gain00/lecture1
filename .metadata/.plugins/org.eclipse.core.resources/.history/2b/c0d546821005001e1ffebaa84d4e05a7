@@ -1,0 +1,92 @@
+<!-- prettier-ignore -->
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="include/header.jsp" %>
+<!-- prettier-ignore -->
+<%
+	//  db 접속
+	
+	String pLoggedUserId =  (String) session.getAttribute("loggedUserId");
+	
+	String driver = "oracle.jdbc.OracleDriver";
+	String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	String id = "wjdwo1104";
+	String pw = "1234";
+	
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	String sql =  "select * from member where id = ?";
+	
+	Class.forName(driver);
+	conn = DriverManager.getConnection(url,id,pw);
+	pstmt = conn.prepareStatement(sql);
+	pstmt.setString(1, pLoggedUserId);
+	
+	rs = pstmt.executeQuery();
+	String address = null;
+	String detailAddress = null;
+	String zonecode = null;
+	String name = null;
+	String allAddress =  null;
+	String extraAddress = null;
+	if(rs.next()) {
+		
+		address = rs.getString("address");
+		detailAddress = rs.getString("detailAddress");
+		zonecode = rs.getString("changeZonecode");
+		name = rs.getString("name");
+		extraAddress = rs.getString("extraAddress");
+		allAddress= address+ " / "+detailAddress;
+	}
+	if(detailAddress==null) detailAddress = "상세주소 없음";
+	  
+	
+%>
+
+  <form action="modify-process.jsp" method="post" class="join">
+    <div class="container-sm">
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <div class="form-floating mb-5">
+            <input type="text" class="form-control" name="userId" id="floatingInput" placeholder="아이디를 입력해주세요" value=<%=pLoggedUserId%>/>
+            <label for="floatingInput">ID</label>
+          </div>
+          <div class="form-floating mb-5">
+            <input type="password" class="form-control" name="userPw" id="floatingPassword" placeholder="Password" />
+            <label for="floatingPassword">Password</label>
+          </div>
+          <div class="form-floating mb-5">
+            <input type="text" class="form-control" name="userName" id="floatingName" placeholder="이름" value=<%=name%> />
+            <label for="floatingName">Name</label>
+          </div>
+
+          <div class="input-group mb-3">
+            <input type="text" class="form-control-lg" placeholder="우편번호" id="zonecode" name="zonecode" readonly value=<%=zonecode%> />
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="searchZonecode()">Button</button>
+          </div>
+
+          <div class="form-floating mb-5">
+            <input type="text" class="form-control address" name="userAddress" id="floatingAddress" placeholder="주소를 입력해주세요" value=<%=address%>/>
+            <label for="floatingAddress">Address</label>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <input type="text" class="form-control-lg detailAddress" placeholder="상세주소" aria-label="First name" name="detailAddress" value=<%=detailAddress%> />
+            </div>
+            <div class="col">
+              <input type="text" class="form-control-lg extraAddress" placeholder="참고사항" aria-label="Last name" name="extraAddress" value=<%=extraAddress%> />
+            </div>
+          </div>
+
+          <div class="text-center"><button type="submit" class="btn btn-primary btn-lg">Join</button></div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+<%@ include file="include/footer.jsp" %>

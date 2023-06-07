@@ -1,0 +1,15 @@
+<%@include file = "include/header.jsp"%>
+
+<body>
+  <form action="login-process.jsp" method="post">
+    <div>
+      <label><span>ID</span><input type="text" name="userId" /></label>
+    </div>
+    <div>
+      <label><span>PW</span><input type="text" name="userPw" /></label>
+    </div>
+    <div><button>LOGIN</button></div>
+  </form>
+</body>
+
+<%@include file = "include/header.jsp"%>
