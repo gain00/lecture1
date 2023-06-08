@@ -32,11 +32,12 @@ pstmt.setString(1, pUserId);
 pstmt.setString(2, pUserPw);
 
 
-int result = pstmt.executeUpdate(); //select를 제외하ㅏ ㄴ나머지 update,delete,insert executeUpdate를 사용
+int result = pstmt.executeUpdate(); //select를 제외하ㅏ ㄴ나머지 update,delete,insert executeUpdate를 사용dd
 
 
 
 if(result>0){
+	
 	response.sendRedirect("login-form.jsp");
 }else{
 	out.println("<script>alert('잘못된 비밀번호입니다'); location.href='delete.jsp';</script>");

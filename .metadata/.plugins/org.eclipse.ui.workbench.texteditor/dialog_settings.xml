@@ -4,8 +4,10 @@
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="8080"/>
+		<item key="selection" value="form"/>
 		<list key="findhistory">
+			<item value="loggedUserId"/>
+			<item value=" conn = DriverManager.getConnection(url,id,pw);"/>
 			<item value="8080"/>
 			<item value="getcon"/>
 		</list>

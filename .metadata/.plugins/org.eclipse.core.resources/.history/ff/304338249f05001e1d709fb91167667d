@@ -1,0 +1,51 @@
+
+
+
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.DriverManager"%>
+<%@ page language="java" contentType="application/json; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<%
+
+String driver = "oracle.jdbc.OracleDriver";
+String url = "jdbc:oracle:thin:@localhost:1521:xe";
+String id = "wjdwo1104";
+String pw = "1234";
+String pUserId = request.getParameter("userId");
+
+
+out.println(pUserId);
+
+
+Connection conn = null;
+PreparedStatement pstmt = null;
+ResultSet rs = null;
+
+String sql = "select count(*) as count from member where id = ? ;";
+
+
+
+Class.forName(driver);
+conn = DriverManager.getConnection(url,id,pw);//sql과 연결
+pstmt = conn.prepareStatement(sql);
+pstmt.setString(1,pUserId);
+
+pstmt.executeQuery();
+
+rs = pstmt.executeQuery();//rs값은 그럼 1?
+int result = 0;
+boolean isState = true;
+if(rs.next()){
+	result = rs.getInt("count");
+	if(result>0){
+		isState = true;
+		
+	}else{
+		isState = false;
+	}
+}
+
+
