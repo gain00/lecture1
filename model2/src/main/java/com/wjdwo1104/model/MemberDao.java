@@ -40,13 +40,13 @@ public class MemberDao {
 public int insertMember(MemberDto memberDto) {
 	int result = 0;
 	getConnection();
-	String sql = "insert into member values(?,?,?,?,?,?,?,?,?)";
+	String sql = "insert into member values(?,?,?,?,?,?,?,?)";
 	try {
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, memberDto.getId());
-		pstmt.setString(2, memberDto.getName());
-		pstmt.setString(3, memberDto.getPassword());
-		pstmt.setString(4, memberDto.getEmail());
+		pstmt.setString(2, memberDto.getPassword());
+		pstmt.setString(3, memberDto.getEmail());
+		pstmt.setString(4, memberDto.getName());
 		pstmt.setInt(5, memberDto.getZonecode());
 		pstmt.setString(6, memberDto.getAddress());
 		pstmt.setString(7, memberDto.getDetailAddress());
@@ -84,6 +84,58 @@ public MemberDto loginMember(MemberDto memberDto) {
 		close();
 	}
 	return loggedMemberDto;
+}
+
+public int idCheck(String userId) {
+	// TODO Auto-generated method stub
+	int result = 0;
+	getConnection();
+	String sql = "select count(*)as count from member where id = ?";
+	try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1,userId);
+		rs = pstmt.executeQuery();
+		if(rs.next()) {
+			result = rs.getInt("count");}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+	
+	return result;
+
+}
+
+public MemberDto getMemberInfo(String userId) {
+	MemberDto infomemberDto = null;
+	getConnection();
+	String sql = "select * from member where id = ?";
+	try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1,userId);
+		rs = pstmt.executeQuery();
+		if(rs.next()) {
+			infomemberDto = new MemberDto();
+			infomemberDto.setId(rs.getString("id"));
+			infomemberDto.setName(rs.getString("name"));
+			infomemberDto.setEmail(rs.getString("email"));
+			infomemberDto.setAddress(rs.getString("address"));
+			infomemberDto.setZonecode(rs.getInt("zonecode"));
+			infomemberDto.setDetailAddress(rs.getString("detailaddress"));
+			
+			
+		}
+		
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		close();
+	}
+	
+	
+	return infomemberDto; 
 }
 
 

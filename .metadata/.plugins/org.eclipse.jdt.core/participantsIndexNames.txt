@@ -1,19 +1,7 @@
 INDEX VERSION 1.132
-C:\Users\y\Desktop\jsp-lecture\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1592707132.index
+C:\Users\y\Desktop\ljj\jsp-lecture\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\142165651.index
 \model2\src\main\java
-C:\Users\y\Desktop\jsp-lecture\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3596203229.index
-\db-connect\src\main\java
-C:\Users\y\Desktop\jsp-lecture\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\237333262.index
+C:\Users\y\Desktop\ljj\jsp-lecture\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3040728166.index
 \model2\src\main\java
-C:\Users\y\Desktop\jsp-lecture\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1641704096.index
-\jsp02\src\main\java
-C:\Users\y\Desktop\jsp-lecture\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\810764759.index
-\db-connect\src\main\java
-C:\Users\y\Desktop\jsp-lecture\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2082080613.index
-\db-connect\src\main\java
-C:\Users\y\Desktop\jsp-lecture\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1739913649.index
-\jsp02\src\main\java
-C:\Users\y\Desktop\jsp-lecture\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2735161392.index
-\model2\src\main\java
-C:\Users\y\Desktop\jsp-lecture\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\142165651.index
+C:\Users\y\Desktop\ljj\jsp-lecture\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2735161392.index
 \model2\src\main\java

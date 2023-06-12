@@ -45,6 +45,7 @@ public class JoinProcessController extends HttpServlet {
 		memberDto.setDetailAddress(detailAddress);
 		memberDto.setEmail(userEmail);
 		int result = memberDao.insertMember(memberDto);
+		System.out.println(result);
 		if(result>0) {
 			ScriptWriter.alertAndNext(response, "회원가입 되었습니다.", "../member/login");
 		} else {

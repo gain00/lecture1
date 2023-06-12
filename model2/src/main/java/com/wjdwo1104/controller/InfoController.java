@@ -9,29 +9,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class LoginFormController
- */
-@WebServlet("/member/login")
-public class LoginFormController extends HttpServlet {
+import com.wjdwo1104.model.MemberDao;
+import com.wjdwo1104.model.MemberDto;
+
+
+@WebServlet("/member/info")
+public class InfoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginFormController() {
+   
+    public InfoController() {
         super();
-        // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String userId = request.getParameter("userId");
+		MemberDao memberDao = new MemberDao();
+		MemberDto infoMemberDto = memberDao.getMemberInfo(userId);//변수 보내려면 request에다가 실음
+		request.setAttribute("infoMemberDto", infoMemberDto);//변수배열 이해
+		request.getRequestDispatcher("/WEB-INF/member/info.jsp");
 		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("/WEB-INF/member/login.jsp");
+				request.getRequestDispatcher("/WEB-INF/member/info.jsp");
 		dispatcher.forward(request, response);
-	}// ("/member/login")이 주소에대한 요청을 /WEB-INF/member/login.jsp로치환
+	}
 
 }
-
