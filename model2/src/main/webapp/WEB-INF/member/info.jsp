@@ -22,7 +22,7 @@
       
       <tr>
         <th scope="row">주소</th>
-        <td>${infoMemberDto.address }  ${infoMemberDto.detailAddress }</td>
+        <td>${infoMemberDto.address } / ${infoMemberDto.detailAddress }</td>
       </tr>
       <tr>
         <th scope="row">우편번호</th>
@@ -31,9 +31,9 @@
     </tbody>
   </table>
   <div class="mt-5">
-    <a href="modify.jsp" class="btn btn-info">회원 정보 수정</a>
-       <a href="modify-password.jsp" class="btn btn-info">비밀번호 변경</a>
-    <a href="delete.jsp" class="btn btn-danger">회원 탈퇴</a>
+    <a href="../member/modify?userId=${infoMemberDto.id}" class="btn btn-info">회원 정보 수정</a>
+       <a href="../member/passwordModify" class="btn btn-info">비밀번호 변경</a>
+    <a href="../member/delete?userId=${infoMemberDto.id}" class="btn btn-danger">회원 탈퇴</a>
   </div>
 </div>
 <%@ include file="../include/footer.jsp" %>

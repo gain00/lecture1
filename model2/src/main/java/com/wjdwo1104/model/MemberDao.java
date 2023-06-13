@@ -138,6 +138,69 @@ public MemberDto getMemberInfo(String userId) {
 	return infomemberDto; 
 }
 
+public int modifyMember(MemberDto memberDto) {
+	int result = 0;
+	getConnection();
+	String sql = "update member set name = ?, email = ?,zonecode = ?, address = ?, detailAddress = ?, extraAddress = ?  where id = ? and password = ?";
+	try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1,memberDto.getName());
+		pstmt.setString(2,memberDto.getEmail());
+		pstmt.setInt(3,memberDto.getZonecode());
+		pstmt.setString(4,memberDto.getAddress());
+		pstmt.setString(5,memberDto.getDetailAddress());
+		pstmt.setString(6,memberDto.getExtraAddress());
+		pstmt.setString(7,memberDto.getId());
+		pstmt.setString(8,memberDto.getPassword());
+		result = pstmt.executeUpdate();
+		
+	} catch (Exception e) {
+		
+		e.printStackTrace();
+	}finally {
+		close();
+	}
+	return result;
+}
+
+public int deleteMember(MemberDto memberDto) {
+	int result = 0 ;
+	getConnection();
+	String sql = "delete from member where id = ? and password = ?";
+	try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, memberDto.getId());
+		pstmt.setString(2, memberDto.getPassword());
+		result = pstmt.executeUpdate();
+		System.out.println(result);
+	} catch (Exception e) {
+		
+		e.printStackTrace();
+	}finally {
+		close();
+	}
+	return result;
+}
+
+public int modifyPassword(PasswordDto passwordDto) {
+	int result = 0;
+	getConnection();
+	String sql = "update member set password = ? where id = ? and password = ?";
+	try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, passwordDto.getNewUserPw());
+		pstmt.setString(1, passwordDto.getUserId());
+		pstmt.setString(1, passwordDto.getUserPw());
+		result = pstmt.executeUpdate();
+	} catch (Exception e) {
+		
+		e.printStackTrace();
+	}finally {
+		close();
+	}
+	return result;
+}
+
 
 
 
